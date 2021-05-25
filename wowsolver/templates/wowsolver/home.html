@@ -1,0 +1,32 @@
+{% load static %}
+{% load extra %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="{% static 'wowsolver/js/add_input.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'wowsolver/css/style.css' %}">
+</head>
+<body>
+    <form action="{% url 'solve' %}" method="get">
+        <div> 
+            <label for="num_of_letters">Letters</label>
+            <input id="num_of_letters" class="number_of_letters" type="text" pattern="[A-Z]+" name="letters" value="{{ letters }}">
+        </div>
+        <div>
+            <label for="length_of_word">Word</label>
+        <input id="length_of_word" class="length_of_word" type="text" pattern="[.A-Z]+" name="word" value="{{ word }}">
+        </div>
+        <button type="submit">Solve</button>
+    </form>
+    <div>
+        {% for guess in guesses %}
+            <p>{{ guess }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
